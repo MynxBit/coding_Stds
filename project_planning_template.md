@@ -1,6 +1,6 @@
 # Project Planning & Requirements Template
 
-**Version**: v1.0 – Universal Planning Standard  
+**Version**: v1.1 – Universal Planning Standard  
 **Last Updated**: 2024-12-20 *(Date reflects last structural revision)*
 
 ---
@@ -30,13 +30,16 @@ This document provides a **reusable checklist and template** for planning any so
 9. [Data & Storage](#9-data--storage)
 10. [Integration Points](#10-integration-points)
 11. [Security Considerations](#11-security-considerations)
-12. [Deployment & Distribution](#12-deployment--distribution)
-13. [Testing Strategy](#13-testing-strategy)
-14. [Success Metrics](#14-success-metrics)
-15. [Risks & Mitigations](#15-risks--mitigations)
-16. [Timeline & Phases](#16-timeline--phases)
-17. [Open Questions](#17-open-questions)
-18. [Approval Checklist](#18-approval-checklist)
+12. [Legal & Compliance](#12-legal--compliance)
+13. [Deployment & Distribution](#13-deployment--distribution)
+14. [Operations & Maintenance](#14-operations--maintenance)
+15. [Documentation & Knowledge Transfer](#15-documentation--knowledge-transfer)
+16. [Testing Strategy](#16-testing-strategy)
+17. [Success Metrics](#17-success-metrics)
+18. [Risks & Mitigations](#18-risks--mitigations)
+19. [Timeline & Phases](#19-timeline--phases)
+20. [Open Questions](#20-open-questions)
+21. [Approval Checklist](#21-approval-checklist)
 
 ---
 
@@ -81,6 +84,27 @@ This document provides a **reusable checklist and template** for planning any so
 ```
 [What makes this the right time? Market need? Technology available?]
 ```
+
+### 2.5 Assumptions & Constraints
+
+> [!CAUTION]
+> Unwritten assumptions cause future conflicts. Document them explicitly.
+
+#### Assumptions
+
+| Assumption | Rationale | Risk if False |
+|------------|-----------|---------------|
+| [Assumption 1] | [Why we believe this] | [What breaks if wrong] |
+| [Assumption 2] | [Why we believe this] | [What breaks if wrong] |
+| [Assumption 3] | [Why we believe this] | [What breaks if wrong] |
+
+#### Constraints
+
+| Constraint | Source | Impact |
+|------------|--------|--------|
+| [Constraint 1] | [Who/what imposed it] | [How it limits design] |
+| [Constraint 2] | [Source] | [Impact] |
+| [Constraint 3] | [Source] | [Impact] |
 
 ---
 
@@ -140,6 +164,20 @@ This document provides a **reusable checklist and template** for planning any so
 ```
 - [Out of scope item 1] — Reason: [why excluded]
 - [Out of scope item 2] — Reason: [why excluded]
+```
+
+### 4.5 Non-Goals (Design Intent Boundaries)
+
+> [!IMPORTANT]
+> "Out of scope" is tactical. Non-goals are **philosophical**. These protect architecture from scope creep.
+
+This project explicitly does **NOT** aim to:
+
+```
+- [Non-goal 1: e.g., "Replace full-fledged enterprise platforms"]
+- [Non-goal 2: e.g., "Optimize for non-technical users"]
+- [Non-goal 3: e.g., "Provide real-time collaboration in v1"]
+- [Non-goal 4: e.g., "Guarantee backward compatibility across major versions"]
 ```
 
 ---
@@ -205,7 +243,17 @@ This document provides a **reusable checklist and template** for planning any so
 | Typography | System fonts / Custom fonts: ___ |
 | Animation Level | None / Subtle / Rich |
 
-### 6.2 Key Screens/Views
+### 6.2 Failure Philosophy
+
+> How the system handles and communicates errors.
+
+| Aspect | Choice |
+|--------|--------|
+| Failure Mode | Fail fast / Fail safe / Fail silent |
+| Error Visibility | User-actionable / System-only / Logged only |
+| Recovery Strategy | Auto-retry / Manual retry / Graceful degradation |
+
+### 6.3 Key Screens/Views
 
 | Screen | Purpose | Priority |
 |--------|---------|----------|
@@ -213,14 +261,14 @@ This document provides a **reusable checklist and template** for planning any so
 | [Screen 2] | [What user does here] | MVP / Post-MVP |
 | [Screen 3] | [What user does here] | MVP / Post-MVP |
 
-### 6.3 UI Mockups Required
+### 6.4 UI Mockups Required
 
 | Mockup | Status | Notes |
 |--------|--------|-------|
 | [Screen/Component 1] | [ ] Pending  [ ] Generated  [ ] Approved | [Link or notes] |
 | [Screen/Component 2] | [ ] Pending  [ ] Generated  [ ] Approved | [Link or notes] |
 
-### 6.4 User Flows
+### 6.5 User Flows
 
 ```
 Main Flow:
@@ -235,7 +283,7 @@ Error Flow:
 3. [User can recover by ___]
 ```
 
-### 6.5 Responsive/Adaptive Design
+### 6.6 Responsive/Adaptive Design
 
 ```
 [ ] Single fixed size
@@ -299,6 +347,35 @@ Error Flow:
 |-------|----------|--------|
 | 001 | [Major decision 1] | Proposed / Accepted / Superseded |
 | 002 | [Major decision 2] | Proposed / Accepted / Superseded |
+
+### 7.6 Change & Versioning Strategy
+
+#### Versioning
+
+```
+[ ] Semantic versioning: MAJOR.MINOR.PATCH
+[ ] Calendar versioning: YYYY.MM.PATCH
+[ ] Other: ___
+
+Breaking changes allowed only in: [ ] MAJOR releases [ ] Never [ ] Any release
+```
+
+#### Change Control
+
+| Change Type | Approval Required |
+|-------------|-------------------|
+| UI changes | [Who approves] |
+| Architecture changes | [Who approves] |
+| Security changes | [Who approves] |
+| API changes | [Who approves] |
+
+#### Deprecation Policy
+
+```
+Minimum supported versions: [e.g., "current + 2 previous"]
+Deprecation notice period: [e.g., "1 major version"]
+Migration path required: [ ] Yes [ ] No
+```
 
 ---
 
@@ -425,9 +502,25 @@ Entity: Preferences
 
 ---
 
-## 12. Deployment & Distribution
+## 12. Legal & Compliance
 
-### 12.1 Distribution Method
+> Even if "N/A", consciously check each item.
+
+```
+[ ] Open-source license obligations reviewed
+[ ] Export control concerns evaluated
+[ ] Internal policy compliance verified
+[ ] Industry-specific regulations (HIPAA, PCI, etc.): [ ] N/A [ ] Applicable: ___
+[ ] Terms of service / EULA required
+[ ] Privacy policy required
+[ ] Data retention policy defined
+```
+
+---
+
+## 13. Deployment & Distribution
+
+### 13.1 Distribution Method
 
 ```
 [ ] Direct download (website)
@@ -437,7 +530,7 @@ Entity: Preferences
 [ ] Source only (build yourself)
 ```
 
-### 12.2 Installer Requirements
+### 13.2 Installer Requirements
 
 | Requirement | Details |
 |-------------|---------|
@@ -447,7 +540,7 @@ Entity: Preferences
 | Uninstaller provided | [ ] Yes [ ] No |
 | Upgrade path | [ ] In-app update [ ] Manual reinstall [ ] Auto-update |
 
-### 12.3 User Notifications During Install
+### 13.3 User Notifications During Install
 
 ```
 [ ] License agreement
@@ -460,9 +553,60 @@ Entity: Preferences
 
 ---
 
-## 13. Testing Strategy
+## 14. Operations & Maintenance
 
-### 13.1 Test Types
+> How the system will be operated and maintained post-launch.
+
+### 14.1 Logging & Diagnostics
+
+| Aspect | Details |
+|--------|---------|
+| Log storage location | [Path or service] |
+| Log rotation policy | [e.g., "7 days, 100 MB max"] |
+| Debug vs release verbosity | [Levels available] |
+| Crash report collection | [ ] None [ ] Opt-in [ ] Automatic |
+
+### 14.2 Failure Handling
+
+| Scenario | Expected Behavior |
+|----------|-------------------|
+| Startup failure | [e.g., "Show actionable error with log path"] |
+| Corrupt config | [e.g., "Auto-reset to defaults + warn user"] |
+| Missing dependency | [e.g., "Graceful degradation with message"] |
+| Network unavailable | [e.g., "Offline mode with sync later"] |
+
+### 14.3 Support Model
+
+| Aspect | Details |
+|--------|---------|
+| User support channel | [Email / Forum / Discord / etc.] |
+| SLA expectations | [Response time, resolution time] |
+| Issue triage process | [How bugs are prioritized] |
+| On-call rotation | [ ] N/A [ ] Defined: ___ |
+
+---
+
+## 15. Documentation & Knowledge Transfer
+
+> Prevents tribal knowledge decay.
+
+| Artifact | Audience | Owner | Required? |
+|----------|----------|-------|-----------|
+| Architecture doc | Developers | Tech Lead | [ ] Yes [ ] No |
+| User guide | End users | Product | [ ] Yes [ ] No |
+| API reference | Integrators | Tech Lead | [ ] Yes [ ] No |
+| Threat model | Security | Security Lead | [ ] Yes [ ] No |
+| ADR log | Engineers | Team | [ ] Yes [ ] No |
+| Runbook | Operations | DevOps | [ ] Yes [ ] No |
+
+> [!NOTE]
+> Documentation is considered **DONE** only when updated alongside code changes.
+
+---
+
+## 16. Testing Strategy
+
+### 16.1 Test Types
 
 | Test Type | Coverage Target | Tools |
 |-----------|-----------------|-------|
@@ -471,7 +615,7 @@ Entity: Preferences
 | E2E tests | Main user flows | [Framework] |
 | Manual testing | Edge cases | Checklist |
 
-### 13.2 Test Environments
+### 16.2 Test Environments
 
 ```
 [ ] Local development
@@ -480,7 +624,7 @@ Entity: Preferences
 [ ] Production monitoring
 ```
 
-### 13.3 Acceptance Criteria Template
+### 16.3 Acceptance Criteria Template
 
 ```
 Given: [Initial state]
@@ -490,9 +634,9 @@ Then: [Expected result]
 
 ---
 
-## 14. Success Metrics
+## 17. Success Metrics
 
-### 14.1 Launch Criteria
+### 17.1 Launch Criteria
 
 | Metric | Target | Current |
 |--------|--------|---------|
@@ -501,7 +645,7 @@ Then: [Expected result]
 | Test coverage | > __% | __% |
 | Performance targets met | Yes | [ ] |
 
-### 14.2 Post-Launch Metrics
+### 17.2 Post-Launch Metrics
 
 | Metric | Target | Measurement |
 |--------|--------|-------------|
@@ -512,7 +656,7 @@ Then: [Expected result]
 
 ---
 
-## 15. Risks & Mitigations
+## 18. Risks & Mitigations
 
 | Risk | Probability | Impact | Mitigation | Owner |
 |------|-------------|--------|------------|-------|
@@ -522,9 +666,9 @@ Then: [Expected result]
 
 ---
 
-## 16. Timeline & Phases
+## 19. Timeline & Phases
 
-### 16.1 Phase Breakdown
+### 19.1 Phase Breakdown
 
 | Phase | Description | Duration | Deliverables |
 |-------|-------------|----------|--------------|
@@ -534,7 +678,7 @@ Then: [Expected result]
 | Phase 4: Polish | Testing, bug fixes | __ days | Release candidate |
 | Phase 5: Launch | Distribution, docs | __ days | v1.0 release |
 
-### 16.2 Milestones
+### 19.2 Milestones
 
 | Milestone | Target Date | Status |
 |-----------|-------------|--------|
@@ -545,7 +689,7 @@ Then: [Expected result]
 
 ---
 
-## 17. Open Questions
+## 20. Open Questions
 
 > [!CAUTION]
 > These questions must be resolved before implementation:
@@ -558,22 +702,28 @@ Then: [Expected result]
 
 ---
 
-## 18. Approval Checklist
+## 21. Approval Checklist
 
 Before moving to implementation, confirm:
 
 ### Planning Completeness
 
 - [ ] Problem statement is clear and validated
+- [ ] Assumptions and constraints are documented
 - [ ] Target users are defined
 - [ ] MVP features are prioritized
+- [ ] Non-goals are explicit
 - [ ] Out-of-scope items are explicit
 - [ ] Non-functional requirements have targets
 - [ ] UI mockups are approved
 - [ ] Architecture is documented
+- [ ] Change/versioning strategy defined
 - [ ] Technology is selected and justified
 - [ ] Security considerations addressed
+- [ ] Legal/compliance reviewed
 - [ ] Deployment method chosen
+- [ ] Operations/maintenance plan exists
+- [ ] Documentation ownership assigned
 
 ### Stakeholder Approval
 
@@ -593,6 +743,7 @@ Before moving to implementation, confirm:
 │   ✓ Clarity before code              ✓ Questions before assumptions         │
 │   ✓ Scope before schedule            ✓ Architecture before implementation   │
 │   ✓ User needs before features       ✓ Risks before commitments             │
+│   ✓ Constraints before creativity    ✓ Operations before launch             │
 │                                                                              │
 │   Good projects are PLANNED.                                                 │
 │   Bad projects are DISCOVERED during implementation.                         │
